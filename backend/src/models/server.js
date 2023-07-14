@@ -1,6 +1,7 @@
 import express from "express";
 import cors from "cors";
 import accionesRouter from "../routes/acciones.routes.js"
+import monedasRouter from "../routes/moneda.routes.js"
 
 class Server {
 
@@ -8,6 +9,7 @@ class Server {
         this.app = express();
         this.port = process.env.PORT;
         this.accionesPath = "/api/acciones";
+        this.monedasPath = "/api/monedas";
 
         //* Middlewares
         this.middlewares();
@@ -27,6 +29,7 @@ class Server {
 
     routes(){
         this.app.use(this.accionesPath,accionesRouter);
+        this.app.use(this.monedasPath,monedasRouter)
     }
 
     listener(){
