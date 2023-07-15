@@ -2,6 +2,8 @@ import express from "express";
 import cors from "cors";
 import accionesRouter from "../routes/acciones.routes.js"
 import monedasRouter from "../routes/moneda.routes.js"
+import tipoMonedasRouter from "../routes/tipoMoneda.routes.js";
+import traderRouter from "../routes/trader.routes.js";
 
 class Server {
 
@@ -10,6 +12,8 @@ class Server {
         this.port = process.env.PORT;
         this.accionesPath = "/api/acciones";
         this.monedasPath = "/api/monedas";
+        this.tipoMonedaPath = "/api/tipoMoneda"; 
+        this.traderPath = "/api/trader";
 
         //* Middlewares
         this.middlewares();
@@ -29,7 +33,9 @@ class Server {
 
     routes(){
         this.app.use(this.accionesPath,accionesRouter);
-        this.app.use(this.monedasPath,monedasRouter)
+        this.app.use(this.monedasPath,monedasRouter);
+        this.app.use(this.tipoMonedaPath,tipoMonedasRouter);
+        this.app.use(this.traderPath,traderRouter);
     }
 
     listener(){
